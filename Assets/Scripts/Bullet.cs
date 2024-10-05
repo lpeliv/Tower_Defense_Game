@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour
     public float speed = 70f;
     public GameObject impactEffect;
 
+    public float explosionRadius = 0f;
+
+    public int damage = 50;
     public void Seek(Transform _target)
     {
         target = _target;
@@ -30,6 +33,25 @@ public class Bullet : MonoBehaviour
         }
         
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in colliders)
+        {
+            if(collider.tag == "Enemy")
+            {
+                Damage(collider.transform);
+            }
+        }
+    }
+
+    void Damage(Transform enemy)
+    {
+        Enemy _enemy = enemy.GetComponent<Enemy>();
+
+        if( _enemy != null)
+        {
+            _enemy.TakeDamage(damage);
+        }
     }
 
     private void HitTarget()

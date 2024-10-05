@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using System.Globalization;
 
 // Spawner needs to be improved, multiple different enemies have to spawn in same wave,
 // add a random spawn location so enemies don't overlap, activate different Wave Spawner
@@ -30,13 +31,17 @@ public class WaveSpawner : MonoBehaviour
 
         countdown -= Time.deltaTime;
 
-        waveCountdownText.text = Mathf.Round(countdown).ToString();
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+
+        waveCountdownText.text = string.Format(CultureInfo.InvariantCulture, "{0:00.00}", countdown);
     }
 
     // Should be implemented --> array of waves with enemy types and other specifics
     IEnumerator SpawnWave()
     {
         waveIndex++;
+        PlayerStats.Rounds++;
+
         for (int i = 0; i < waveIndex; i++) 
         {
             SpawnEnemy();
