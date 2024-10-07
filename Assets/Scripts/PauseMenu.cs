@@ -1,30 +1,27 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 
-public class GameOver : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    public TextMeshProUGUI roundsText;
+    public GameObject ui;
 
-    private void OnEnable()
+    private void Update()
     {
-        Toggle();
-        
-        if(PlayerStats.Rounds < 1)
+        if (!GameManager.GameIsOver &&(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)))
         {
-            roundsText.text = PlayerStats.Rounds.ToString();
+            Toggle();
         }
-        roundsText.text = (PlayerStats.Rounds - 1).ToString();
     }
-
     
     public void Toggle()
     {
-        if (GameManager.GameIsOver)
+        ui.SetActive(!ui.activeSelf);
+        if(ui.activeSelf)
         {
             Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+
         }
         else
         {
@@ -36,16 +33,8 @@ public class GameOver : MonoBehaviour
 
     public void Retry()
     {
-        Debug.Log("Retry pressed.");
-
         Toggle();
-        Debug.Log("Toggle done.");
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        Time.timeScale = 1f;
-        Debug.Log("Scene loaded.");
-
     }
 
     public void Menu()
