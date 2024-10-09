@@ -42,7 +42,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        buildManager.BuildTurretOn(this);
+        //buildManager.BuildTurretOn(this);
     }
 
     private void OnMouseEnter()
