@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class NodeImproved : MonoBehaviour, IInteractable
 {
     [Header("Color settings")]
@@ -9,71 +8,58 @@ public class NodeImproved : MonoBehaviour, IInteractable
 
     [Header("Optional - for ruins")]
     public GameObject turret;
-
+    
     public Vector3 positionOffset;
-
+    
     private Renderer rend;
     BuildManager buildManager;
-
+    
     private void Start()
     {
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
         buildManager = BuildManager.instance;
     }
-
+    
     public Vector3 GetBuildPosition()
     {
         return transform.position + positionOffset;
     }
-
+    
     public void Interact()
     {
-        rend.material.color = hoverColor;
+        //If no turret was selected, player shouldn't build anything
+        if (!buildManager.CanBuild)
+        {
+            ResetColor();
+            return;
+        }
+        
+        if (turret != null)
+        {
+            rend.material.color = startColor;
+            Debug.Log("Can't build there! - TODO: Display on screen.");
+            return;
+        }
+
+        if (buildManager.HasMoney)
+        { 
+            rend.material.color = hoverColor;
+
+            if(Input.GetMouseButtonDown(0))
+            {
+                buildManager.BuildTurretOn(this);
+            }
+        }
+
+        else
+        {
+            rend.material.color = notBuildable;
+        }
     }
 
-    //Commented code has to be readjusted for the new Raycasting method 
-    //for user interaction with turret building
-    //private void OnMouseEnter()
-    //{
-    //    if (EventSystem.current.IsPointerOverGameObject())
-    //        return;
-
-    //    if (!buildManager.CanBuild)
-    //    {
-    //        return;
-    //    }
-
-    //    if (buildManager.HasMoney)
-    //    {
-    //        rend.material.color = hoverColor;
-    //    }
-    //    else
-    //    {
-    //        rend.material.color = notBuildable;
-    //    }
-    //}
-    //private void OnMouseDown()
-    //{
-    //    if (EventSystem.current.IsPointerOverGameObject())
-    //        return;
-
-    //    if (!buildManager.CanBuild)
-    //    {
-    //        return;
-    //    }
-
-    //    if (turret != null)
-    //    {
-    //        rend.material.color = startColor;
-    //        Debug.Log("Can't build there! - TODO: Display on screen.");
-    //        return;
-    //    }
-
-    //    buildManager.BuildTurretOn(this);
-    //}
-    //private void OnMouseExit()
-    //{
-    //    rend.material.color = startColor;
-    //}
+    public void ResetColor()
+    {
+        rend.material.color = startColor;
+    }
 }

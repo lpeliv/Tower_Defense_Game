@@ -2319,7 +2319,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355017759}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8db815b542760ba4d92bb76df6b0bc42, type: 3}
   m_Name: 
@@ -2355,7 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf0bff9eb756ee469bf1e5822502f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 200
+  startMoney: 600
   startLives: 1
 --- !u!114 &355017764
 MonoBehaviour:
@@ -5876,7 +5876,7 @@ MonoBehaviour:
   groundDistance: 0.4
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5999,6 +5999,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractorSource: {fileID: 963194228}
   InteractRange: 15
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &969403207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6743,6 +6746,10 @@ PrefabInstance:
     - target: {fileID: 122600088427486858, guid: 5c91e9897a9790e4c89c5f19e0d66724, type: 3}
       propertyPath: m_Name
       value: Node_72
+      objectReference: {fileID: 0}
+    - target: {fileID: 122600088427486858, guid: 5c91e9897a9790e4c89c5f19e0d66724, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 122600088427486858, guid: 5c91e9897a9790e4c89c5f19e0d66724, type: 3}
       propertyPath: m_TagString
