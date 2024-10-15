@@ -21,9 +21,13 @@ public class BuildManager : MonoBehaviour
     public GameObject anotherTurretPrefab;
     
     private TurretBlueprint turretToBuild;
+    private NodeImproved selectedNode;
 
-    public bool CanBuild { get { return turretToBuild != null; } }
+    public TurretUI turretUi;
+
+    public bool CanBuild { get { return turretToBuild != null && IsBuildAllowed; } }
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
+    public bool IsBuildAllowed { get; private set; } = true;
 
     public void BuildTurretOn(NodeImproved node)
     {
@@ -39,11 +43,36 @@ public class BuildManager : MonoBehaviour
         node.turret = turret;
 
         Debug.Log("Turret build! Money left: " + PlayerStats.Money);
+
+        IsBuildAllowed = false;
+    }
+
+    public void SelectNode(NodeImproved node)
+    {
+        if (selectedNode == node)
+        {
+            DeselectNode();
+            Debug.Log("Node Deselected");
+            return;
+        }
+
+        selectedNode = node;
+        turretToBuild = null;
+
+        turretUi.SetTarget(node);
+    }
+
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        turretUi.Hide();
     }
 
     public void SelectTurretToBuild(TurretBlueprint turret) 
     { 
         turretToBuild = turret;
+        DeselectNode();
+        IsBuildAllowed = true;
     }
 
 }

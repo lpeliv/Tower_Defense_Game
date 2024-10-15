@@ -29,16 +29,20 @@ public class NodeImproved : MonoBehaviour, IInteractable
     public void Interact()
     {
         //If no turret was selected, player shouldn't build anything
-        if (!buildManager.CanBuild)
-        {
-            ResetColor();
-            return;
-        }
         
         if (turret != null)
         {
-            rend.material.color = startColor;
-            Debug.Log("Can't build there! - TODO: Display on screen.");
+            if(Input.GetMouseButtonDown(0))
+            {
+                buildManager.SelectNode(this);
+                Debug.Log("Turret Selected");
+            }
+            return;
+        }
+
+        if (!buildManager.CanBuild)
+        {
+            ResetColor();
             return;
         }
 
@@ -49,6 +53,7 @@ public class NodeImproved : MonoBehaviour, IInteractable
             if(Input.GetMouseButtonDown(0))
             {
                 buildManager.BuildTurretOn(this);
+                ResetColor();
             }
         }
 
