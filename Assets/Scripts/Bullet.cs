@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     public float explosionRadius = 0f;
 
     public int damage = 50;
+
     public void Seek(Transform _target)
     {
         target = _target;
@@ -34,10 +35,31 @@ public class Bullet : MonoBehaviour
         
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
+    }
+
+    void HitTarget()
+    {
+        GameObject effectInstance = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectInstance, 2f);
+
+        if (explosionRadius > 0f)
+        {
+            Explode();
+        }
+        else
+        {
+            Damage(target);
+        }
+
+        Destroy(gameObject);
+    }
+
+    void Explode()
+    {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
-            if(collider.tag == "Enemy")
+            if (collider.tag == "Enemy")
             {
                 Damage(collider.transform);
             }
@@ -52,13 +74,5 @@ public class Bullet : MonoBehaviour
         {
             _enemy.TakeDamage(damage);
         }
-    }
-
-    private void HitTarget()
-    {
-        GameObject effectInstance = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 2f);
-
-        Destroy(gameObject);
     }
 }

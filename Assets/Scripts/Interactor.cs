@@ -30,7 +30,6 @@ public class Interactor : MonoBehaviour
                     currentInteractable = interactObj;
                 }
             }
-            //Flickering when moving, while looking at same node, fix it in future
             else
             {
                 CallColorReset();

@@ -9,7 +9,9 @@ using System.Globalization;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
+    public static int EnemiesAlive = 0;
+
+    public Wave[] waves;
 
     public Transform spawnPoint;
 
@@ -23,10 +25,16 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (EnemiesAlive > 0)
+        {
+            return;
+        }
+
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
+            return;
         }    
 
         countdown -= Time.deltaTime;
@@ -36,21 +44,34 @@ public class WaveSpawner : MonoBehaviour
         waveCountdownText.text = string.Format(CultureInfo.InvariantCulture, "{0:00.00}", countdown);
     }
 
-    // Should be implemented --> array of waves with enemy types and other specifics
+    //Multiple enemies can be spawned from the same spawner
     IEnumerator SpawnWave()
     {
-        waveIndex++;
         PlayerStats.Rounds++;
 
-        for (int i = 0; i < waveIndex; i++) 
+        Wave wave = waves[waveIndex];
+
+        for (int i = 0; i < wave.enemies.Length; i++) 
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(timeBetweenEnemies);
+            for (int j = 0; j < wave.enemies[i].count; j++)
+            {
+                SpawnEnemy(wave.enemies[i].enemy);
+                EnemiesAlive++;
+                yield return new WaitForSeconds(1f / wave.spawnRate);
+            }
+        }
+        
+        waveIndex++;
+
+        if(waveIndex == waves.Length)
+        {
+            Debug.Log("Level finished!");
+            this.enabled = false;
         }
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
     }
 }

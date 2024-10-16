@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 public class NodeImproved : MonoBehaviour, IInteractable
 {
@@ -29,13 +30,11 @@ public class NodeImproved : MonoBehaviour, IInteractable
     public void Interact()
     {
         //If no turret was selected, player shouldn't build anything
-        
         if (turret != null)
         {
             if(Input.GetMouseButtonDown(0))
             {
                 buildManager.SelectNode(this);
-                Debug.Log("Turret Selected");
             }
             return;
         }
