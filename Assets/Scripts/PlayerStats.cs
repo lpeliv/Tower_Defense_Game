@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
     public static int Money;
     public int startMoney = 400;
     
-    //This will be changed to BaseHealth combined with PlayerHealth in future
+    //This will be connected to BaseHealth combined with PlayerHealth in future
     public static int Lives;
     public int startLives = 10;
 
@@ -29,7 +29,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        //Testing material grinding
+        //Testing material gathering
         AddWood();
         AddMetal();
     }

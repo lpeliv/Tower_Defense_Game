@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class MouseLook : MonoBehaviour
@@ -10,7 +11,7 @@ public class MouseLook : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = true;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 

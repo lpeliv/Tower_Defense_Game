@@ -5,6 +5,11 @@ public class ShopMenu : MonoBehaviour
     public GameObject ui;
     public MouseLook mouseLookScript;
 
+    private void Start()
+    {
+        mouseLookScript.enabled = true;
+    }
+
     private void Update()
     {
         if (!GameManager.GameIsOver && Input.GetKeyDown(KeyCode.E))

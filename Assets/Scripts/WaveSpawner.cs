@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
-using System.Globalization;
 
 // Spawner needs to be improved, multiple different enemies have to spawn in same wave,
 // add a random spawn location so enemies don't overlap, activate different Wave Spawner
@@ -12,14 +10,17 @@ public class WaveSpawner : MonoBehaviour
     public static int EnemiesAlive = 0;
 
     public Wave[] waves;
-
     public Transform spawnPoint;
 
     public float timeBetweenWaves = 5.5f;
     private float countdown = 2.5f;
     public float timeBetweenEnemies = 0.5f;
 
-    public TextMeshProUGUI waveCountdownText;
+    public float spawnOffsetX = 2f;
+    public float spawnOffsetZ = 2f;
+
+    //Removed the countdown display for now
+    //public TextMeshProUGUI waveCountdownText;
 
     private int waveIndex = 0;
 
@@ -41,7 +42,7 @@ public class WaveSpawner : MonoBehaviour
 
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
-        waveCountdownText.text = string.Format(CultureInfo.InvariantCulture, "{0:00.00}", countdown);
+        //waveCountdownText.text = string.Format(CultureInfo.InvariantCulture, "{0:00.00}", countdown);
     }
 
     //Multiple enemies can be spawned from the same spawner
@@ -72,6 +73,10 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
+        float offsetX = Random.Range(-spawnOffsetX, spawnOffsetX);
+        float offsetZ = Random.Range(-spawnOffsetZ, spawnOffsetZ);
+
+        Vector3 spawnPosition = spawnPoint.position + new Vector3(offsetX, 0, offsetZ);
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
     }
 }
