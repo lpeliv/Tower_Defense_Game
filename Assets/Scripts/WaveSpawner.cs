@@ -54,9 +54,11 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < wave.enemies.Length; i++) 
         {
+            Wave.WaveGroup waveGroup = wave.enemies[i];
+
             for (int j = 0; j < wave.enemies[i].count; j++)
             {
-                SpawnEnemy(wave.enemies[i].enemy);
+                SpawnEnemy(waveGroup.enemy, waveGroup.spawnPoint);
                 EnemiesAlive++;
                 yield return new WaitForSeconds(1f / wave.spawnRate);
             }
@@ -71,7 +73,7 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(GameObject enemy)
+    void SpawnEnemy(GameObject enemy, Transform spawnPoint)
     {
         float offsetX = Random.Range(-spawnOffsetX, spawnOffsetX);
         float offsetZ = Random.Range(-spawnOffsetZ, spawnOffsetZ);

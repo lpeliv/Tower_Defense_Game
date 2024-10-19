@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1922012106411449119}
   - component: {fileID: 7634949466175256912}
   - component: {fileID: 100635472765557565}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7267114549969221654}
   - component: {fileID: 8912362287206588685}
   - component: {fileID: 7325943137952436883}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: HealthBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: -1485634564287085103}
   - component: {fileID: 7100815785769664334}
   - component: {fileID: 2474086875701002284}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: StandardEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -277,6 +277,17 @@ MonoBehaviour:
   startHealth: 100
   worth: 50
   damage: 3
+  lootTable:
+  - itemPrefab: {fileID: 8754242141564850227, guid: d8ce82bb71cec624abf27486e6556f08, type: 3}
+    dropChance: 100
+    minQuantity: 1
+    maxQuantity: 3
+    itemName: Arm
+  - itemPrefab: {fileID: 287828125876309780, guid: 551b6dbc1b1b22841806f7cf2801a2ad, type: 3}
+    dropChance: 50
+    minQuantity: 4
+    maxQuantity: 6
+    itemName: Torso
   speed: 10
   deathEffect: {fileID: 8405161502198450877, guid: c5182672b36d9714ea78013be6eaaaad, type: 3}
   healthBar: {fileID: 100635472765557565}
@@ -355,7 +366,7 @@ GameObject:
   - component: {fileID: 2636114577916017246}
   - component: {fileID: 3185978231060042526}
   - component: {fileID: 3467080584498001126}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

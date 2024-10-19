@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7664197732870068092}
   - component: {fileID: 6980309319003374622}
   - component: {fileID: 3080812887431537708}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: eye2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1922012106411449119}
   - component: {fileID: 7634949466175256912}
   - component: {fileID: 100635472765557565}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 7267114549969221654}
   - component: {fileID: 8912362287206588685}
   - component: {fileID: 7325943137952436883}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: HealthBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 2610513229223022715}
   - component: {fileID: 8555338879489837358}
   - component: {fileID: 785434482992590255}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: eye1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 5771306285419013656}
   - component: {fileID: 6718583708954915062}
   - component: {fileID: -3963829612308616709}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FastEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -489,6 +489,7 @@ MonoBehaviour:
   startHealth: 60
   worth: 50
   damage: 1
+  lootTable: []
   speed: 20
   deathEffect: {fileID: 8405161502198450877, guid: 9a9af67130b9df04da1a03ed487f5b8e, type: 3}
   healthBar: {fileID: 100635472765557565}
@@ -504,7 +505,7 @@ NavMeshAgent:
   m_Radius: 2
   m_Speed: 15
   m_Acceleration: 100
-  avoidancePriority: 70
+  avoidancePriority: 30
   m_AngularSpeed: 150
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -567,7 +568,7 @@ GameObject:
   - component: {fileID: 2636114577916017246}
   - component: {fileID: 3185978231060042526}
   - component: {fileID: 3467080584498001126}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

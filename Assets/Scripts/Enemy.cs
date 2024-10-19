@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     public int worth = 50;
     public int damage = 1;
 
+    [Header("Loot Drops")]
+    public LootItem[] lootTable;
+
     [HideInInspector]
     public float speed;
 
@@ -38,6 +41,8 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         PlayerStats.Money += worth;
+        
+        DropLoot();
 
         GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 3f);
@@ -59,6 +64,22 @@ public class Enemy : MonoBehaviour
         if(other.CompareTag("FinishingPoint"))
         {
             EndPath();
+        }
+    }
+
+    private void DropLoot()
+    {
+        foreach(LootItem loot in lootTable)
+        {
+            float randomValue = Random.Range(0f, 100f);
+            if(randomValue <= loot.dropChance)
+            {
+                int quantity = Random.Range(loot.minQuantity, loot.maxQuantity + 1);
+                for(int i = 0; i < quantity; i++)
+                {
+                    Instantiate(loot.itemPrefab, transform.position, Quaternion.identity);
+                }
+            }
         }
     }
 }
