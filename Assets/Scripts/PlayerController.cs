@@ -17,18 +17,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-    //Combat system is not complete yet, since many bugs are causing it 
-    //to break other parts of the code.
-    [Header("Combat")]
-    private bool CombatSystem = false;
-    public Transform attackPoint;
-    public float attackRange = 1.5f;
-    public int attackDamage = 25;
-    public LayerMask enemyLayer;
-    private bool isAttacking = false;
-    public GameObject Hammer;
-
-
     private void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayerMask);
@@ -53,40 +41,5 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
-        if(CombatSystem)
-        {
-            if (Input.GetMouseButtonDown(0) && !isAttacking)
-            {
-                Attack();
-            }
-        }
-    }
-
-    void Attack()
-    {
-        StartCoroutine(HammerSwing());
-
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
-
-        foreach (Collider enemy in hitEnemies)
-        {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (attackPoint == null) return;
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
-
-    IEnumerator HammerSwing()
-    {
-        isAttacking = true;
-        Hammer.GetComponent<Animator>().SetTrigger("Attack");
-        yield return new WaitForSeconds(1.0f);
-        isAttacking = false;
     }
 }

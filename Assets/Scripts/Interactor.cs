@@ -13,8 +13,7 @@ public class Interactor : MonoBehaviour
 
     private IInteractable currentInteractable;
 
-    public TurretUI ui;
-
+    //In future, this will be changed so color reset happens inside NodeImproved script
     private void Update()
     {
         Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
@@ -32,14 +31,12 @@ public class Interactor : MonoBehaviour
             }
             else
             {
-                CallColorReset();
-                currentInteractable = null;
+                ClearCurrentInteractable();
             }
         }
         else
         {
-            CallColorReset();
-            currentInteractable = null;
+            ClearCurrentInteractable();
         }
     }
 
@@ -49,5 +46,11 @@ public class Interactor : MonoBehaviour
         {
             node.ResetColor();
         }
+    }
+
+    public void ClearCurrentInteractable()
+    {
+        CallColorReset();
+        currentInteractable = null;
     }
 }

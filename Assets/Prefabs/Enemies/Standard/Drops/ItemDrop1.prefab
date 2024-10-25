@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1665944104687190251}
   - component: {fileID: 5157971864344142109}
   - component: {fileID: 5968495346055782606}
+  - component: {fileID: 1955614576864710464}
+  - component: {fileID: -5015112133635879843}
   m_Layer: 10
   m_Name: ItemDrop1
   m_TagString: Untagged
@@ -104,8 +106,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
-  m_Height: 2
+  m_Radius: 4
+  m_Height: 8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5968495346055782606
@@ -120,3 +122,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b051a41158f534d8461387695fc2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1955614576864710464
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754242141564850227}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 448
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-5015112133635879843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754242141564850227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349fd60a5ab594f449ee2779cb76412b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootItem:
+    itemName: Arm
+    itemPrefab: {fileID: 8754242141564850227}
+    dropChance: 50
+    minQuantity: 0
+    maxQuantity: 2
+  attractionRange: 200
+  attractionSpeed: 5

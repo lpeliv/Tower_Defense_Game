@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class NodeImproved : MonoBehaviour, IInteractable
 {
     [Header("Color settings")]
@@ -13,12 +14,15 @@ public class NodeImproved : MonoBehaviour, IInteractable
     
     private Renderer rend;
     BuildManager buildManager;
+
+    private ShopMenu shopMenu;
     
     private void Start()
     {
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
         buildManager = BuildManager.instance;
+        shopMenu = FindObjectOfType<ShopMenu>();
     }
     
     public Vector3 GetBuildPosition()
@@ -28,6 +32,11 @@ public class NodeImproved : MonoBehaviour, IInteractable
     
     public void Interact()
     {
+        if(shopMenu != null && shopMenu.isShopMenuOpened)
+        {
+            return;
+        }
+
         //If no turret was selected, player shouldn't build anything
         if (turret != null)
         {
@@ -48,7 +57,7 @@ public class NodeImproved : MonoBehaviour, IInteractable
         { 
             rend.material.color = hoverColor;
 
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 buildManager.BuildTurretOn(this);
                 ResetColor();

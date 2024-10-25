@@ -77,7 +77,9 @@ public class Enemy : MonoBehaviour
                 int quantity = Random.Range(loot.minQuantity, loot.maxQuantity + 1);
                 for(int i = 0; i < quantity; i++)
                 {
-                    Instantiate(loot.itemPrefab, transform.position, Quaternion.identity);
+                    Vector3 dropPosition = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f));
+                    Instantiate(loot.itemPrefab, dropPosition, Quaternion.identity);
+                    Debug.Log($"Dropped {loot.itemName} x{quantity}");
                 }
             }
         }

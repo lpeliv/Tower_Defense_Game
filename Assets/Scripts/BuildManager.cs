@@ -24,10 +24,16 @@ public class BuildManager : MonoBehaviour
     private NodeImproved selectedNode;
 
     public TurretUI turretUi;
+    private ShopMenu shopMenu;
 
     public bool CanBuild { get { return turretToBuild != null && IsBuildAllowed; } }
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
     public bool IsBuildAllowed { get; private set; } = true;
+
+    private void Start()
+    {
+        shopMenu = FindObjectOfType<ShopMenu>();
+    }
 
     public void BuildTurretOn(NodeImproved node)
     {
@@ -41,8 +47,6 @@ public class BuildManager : MonoBehaviour
 
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
-
-        Debug.Log("Turret build! Money left: " + PlayerStats.Money);
 
         IsBuildAllowed = false;
     }
@@ -69,7 +73,8 @@ public class BuildManager : MonoBehaviour
     }
 
     public void SelectTurretToBuild(TurretBlueprint turret) 
-    { 
+    {
+        shopMenu.Toggle();
         turretToBuild = turret;
         DeselectNode();
         IsBuildAllowed = true;

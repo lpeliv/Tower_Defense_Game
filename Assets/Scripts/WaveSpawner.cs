@@ -1,53 +1,37 @@
 using UnityEngine;
 using System.Collections;
 
-// Spawner needs to be improved, multiple different enemies have to spawn in same wave,
-// add a random spawn location so enemies don't overlap, activate different Wave Spawner
-// according to the wave number
+// Spawner needs to be improved, add a random spawn location so enemies don't overlap,
 
 public class WaveSpawner : MonoBehaviour
 {
     public static int EnemiesAlive = 0;
+    public bool IsSpawning {  get; private set; }
 
     public Wave[] waves;
     public Transform spawnPoint;
 
     public float timeBetweenWaves = 5.5f;
-    private float countdown = 2.5f;
     public float timeBetweenEnemies = 0.5f;
 
     public float spawnOffsetX = 2f;
     public float spawnOffsetZ = 2f;
 
-    //Removed the countdown display for now
-    //public TextMeshProUGUI waveCountdownText;
-
     private int waveIndex = 0;
 
     private void Update()
     {
-        if (EnemiesAlive > 0)
+        if(EnemiesAlive == 0 && waveIndex >= waves.Length)
         {
-            return;
+            Debug.Log("All waves are complete!");
+            this.enabled = false;
         }
-
-        if (countdown <= 0f)
-        {
-            StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves;
-            return;
-        }    
-
-        countdown -= Time.deltaTime;
-
-        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-
-        //waveCountdownText.text = string.Format(CultureInfo.InvariantCulture, "{0:00.00}", countdown);
     }
 
     //Multiple enemies can be spawned from the same spawner
     IEnumerator SpawnWave()
     {
+        IsSpawning = true;
         PlayerStats.Rounds++;
 
         Wave wave = waves[waveIndex];
@@ -65,11 +49,19 @@ public class WaveSpawner : MonoBehaviour
         }
         
         waveIndex++;
-
+        IsSpawning = false;
         if(waveIndex == waves.Length)
         {
             Debug.Log("Level finished!");
             this.enabled = false;
+        }
+    }
+
+    public void StartNewWave()
+    {
+        if(EnemiesAlive == 0 && !IsSpawning)
+        {
+            StartCoroutine(SpawnWave());
         }
     }
 
