@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject ui;
+    public PlayerLook mouseLookScript;
 
     private void Update()
     {
@@ -21,12 +22,13 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-
+            mouseLookScript.enabled = false;
         }
         else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            mouseLookScript.enabled = true;
             Time.timeScale = 1f;
         }
     }

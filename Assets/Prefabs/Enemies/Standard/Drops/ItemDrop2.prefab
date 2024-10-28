@@ -169,3 +169,4 @@ MonoBehaviour:
     maxQuantity: 1
   attractionRange: 200
   attractionSpeed: 10
+  price: 50

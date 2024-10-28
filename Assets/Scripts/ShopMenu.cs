@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShopMenu : MonoBehaviour
 {
     public GameObject ui;
-    public MouseLook mouseLookScript;
+    public PlayerLook mouseLookScript;
     public GameObject blueprintPrefab;
     public GameObject hammerPrefab;
     public bool isShopMenuOpened;
