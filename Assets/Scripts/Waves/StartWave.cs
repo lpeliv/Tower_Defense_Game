@@ -14,7 +14,6 @@ public class StartWave : MonoBehaviour, IInteractable
     {
         if(Input.GetKeyDown(KeyCode.E) && !waveSpawner.IsSpawning && waveSpawner.enabled) 
         {
-            Debug.Log("Starting new wave...");
             waveSpawner.StartNewWave();
         }
     }

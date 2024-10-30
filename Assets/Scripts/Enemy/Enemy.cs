@@ -40,7 +40,8 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        PlayerStats.Money += worth;
+        //Disabled for now
+        //PlayerStats.Money += worth;
         
         DropLoot();
 

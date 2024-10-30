@@ -9,7 +9,6 @@ public class WaveSpawner : MonoBehaviour
     public bool IsSpawning {  get; private set; }
 
     public Wave[] waves;
-    public Transform spawnPoint;
 
     public float timeBetweenWaves = 5.5f;
     public float timeBetweenEnemies = 0.5f;
@@ -61,6 +60,7 @@ public class WaveSpawner : MonoBehaviour
     {
         if(EnemiesAlive == 0 && !IsSpawning)
         {
+            Debug.Log("Starting new wave...");
             StartCoroutine(SpawnWave());
         }
     }
