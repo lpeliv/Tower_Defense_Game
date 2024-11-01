@@ -37,6 +37,14 @@ public class NodeImproved : MonoBehaviour, IInteractable
             return;
         }
 
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            buildManager.CancelBuild();
+            ResetColor();
+            return;
+        }
+
         //If no turret was selected, player shouldn't build anything
         if (turret != null)
         {

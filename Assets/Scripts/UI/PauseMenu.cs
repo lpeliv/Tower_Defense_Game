@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.GameIsOver &&(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)))
+        if (!GameManager.GameIsOver && ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))))
         {
             Toggle();
         }

@@ -1,39 +1,36 @@
 using UnityEngine;
 
-public class ShopMenu : MonoBehaviour
+public class NPCShop : MonoBehaviour, IInteractable
 {
-    public GameObject ui;
-    public GameObject materialAmount;
+    public GameObject shopUI;
     public PlayerLook mouseLookScript;
-    public GameObject blueprintPrefab;
+    public PlayerMovementBetter movement;
+    public ShopMenu blueprintScript;
+    public PauseMenu pauseMenu;
+    public GameObject ui;
     public GameObject hammerPrefab;
     public bool isShopMenuOpened;
-    
-    private void Start()
-    {
-        mouseLookScript.enabled = true;
-        isShopMenuOpened = false;
-    }
 
-    private void Update()
+    public void Interact()
     {
-        if (!GameManager.GameIsOver && Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Toggle();
         }
     }
-
     public void Toggle()
     {
-        ui.SetActive(!ui.activeSelf);
-        if (ui.activeSelf)
+        shopUI.SetActive(!shopUI.activeSelf);
+        if (shopUI.activeSelf)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             mouseLookScript.enabled = false;
+            blueprintScript.enabled = false;
+            movement.enabled = false;
+            pauseMenu.enabled = false;
             hammerPrefab.SetActive(false);
-            materialAmount.SetActive(true);
-            blueprintPrefab.SetActive(true);
+            ui.SetActive(false);
             isShopMenuOpened = true;
         }
         else
@@ -41,9 +38,11 @@ public class ShopMenu : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             mouseLookScript.enabled = true;
+            blueprintScript.enabled = true;
+            movement.enabled = true;
+            pauseMenu.enabled = true;
             hammerPrefab.SetActive(true);
-            materialAmount.SetActive(false);
-            blueprintPrefab.SetActive(false);
+            ui.SetActive(true);
             isShopMenuOpened = false;
         }
     }

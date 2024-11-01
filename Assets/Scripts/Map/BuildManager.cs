@@ -80,4 +80,12 @@ public class BuildManager : MonoBehaviour
         IsBuildAllowed = true;
     }
 
+    public void CancelBuild()
+    {
+        turretToBuild = null;
+        DeselectNode();
+        IsBuildAllowed = false;
+        Debug.Log("Build canceled");
+    }
+
 }

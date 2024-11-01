@@ -5,7 +5,6 @@ public class LootPickup : MonoBehaviour
     public LootItem lootItem;
     public float attractionRange = 200f;
     public float attractionSpeed = 5f;
-    public int price = 20;
 
     private Transform playerTransform;
     private bool isAttracted = false;

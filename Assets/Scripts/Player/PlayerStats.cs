@@ -19,12 +19,16 @@ public class PlayerStats : MonoBehaviour
     public static int Metal;
     public int startMetal;
 
+    public static int Drops;
+    public int startDrops;
+
     private void Start()
     {
         Money = startMoney;
         Lives = startLives;
         Wood = startWood;
         Metal = startMetal;
+        Drops = startDrops;
     }
 
     private void Update()
@@ -34,12 +38,16 @@ public class PlayerStats : MonoBehaviour
         AddMetal();
     }
 
+    public void AddMoney(int amount)
+    {
+        Money += amount;
+    }
+
     public void AddWood()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
             Wood++;
-            Debug.Log("Wood added");
         }
     }
 
@@ -48,7 +56,11 @@ public class PlayerStats : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             Metal++;
-            Debug.Log("Metal added");
         }
+    }
+
+    public void AddDrop()
+    {
+        Drops++;
     }
 }
