@@ -10,20 +10,23 @@ public class Enemy : MonoBehaviour
     public int worth = 50;
     public int damage = 1;
 
-    [Header("Loot Drops")]
-    public LootItem[] lootTable;
+    //[Header("Loot Drops")]
+    //public LootItem[] lootTable;
 
     [HideInInspector]
     public float speed;
 
+    [Header("References")]
     public GameObject deathEffect;
-
     public Image healthBar;
+    private LootBag lootBag;
 
     void Start()
     {
         speed = startSpeed;
         health = startHealth;
+
+        lootBag = GetComponent<LootBag>();
     }
 
     public void TakeDamage(int amount)
@@ -40,10 +43,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        //Disabled for now
-        //PlayerStats.Money += worth;
-        
-        DropLoot();
+        lootBag?.DropLoot(transform.position);
 
         GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 3f);
@@ -65,24 +65,6 @@ public class Enemy : MonoBehaviour
         if(other.CompareTag("FinishingPoint"))
         {
             EndPath();
-        }
-    }
-
-    private void DropLoot()
-    {
-        foreach(LootItem loot in lootTable)
-        {
-            float randomValue = Random.Range(0f, 100f);
-            if(randomValue <= loot.dropChance)
-            {
-                int quantity = Random.Range(loot.minQuantity, loot.maxQuantity + 1);
-                for(int i = 0; i < quantity; i++)
-                {
-                    Vector3 dropPosition = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f));
-                    Instantiate(loot.itemPrefab, dropPosition, Quaternion.identity);
-                    Debug.Log($"Dropped {loot.itemName} x{quantity}");
-                }
-            }
         }
     }
 }

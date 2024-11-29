@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: -1485634564287085103}
   - component: {fileID: 4343894953044289676}
   - component: {fileID: 7100815785769664334}
+  - component: {fileID: -1117114197093503569}
   m_Layer: 11
   m_Name: StandardEnemy
   m_TagString: Enemy
@@ -329,16 +330,22 @@ MonoBehaviour:
   worth: 50
   damage: 3
   lootTable:
-  - itemName: Arm
+  - id: 0
+    itemName: Arm
     itemPrefab: {fileID: 8754242141564850227, guid: d8ce82bb71cec624abf27486e6556f08, type: 3}
     dropChance: 100
     minQuantity: 0
     maxQuantity: 2
-  - itemName: Torso
+    value: 0
+    type: 0
+  - id: 0
+    itemName: Torso
     itemPrefab: {fileID: 287828125876309780, guid: 551b6dbc1b1b22841806f7cf2801a2ad, type: 3}
     dropChance: 50
     minQuantity: 0
     maxQuantity: 1
+    value: 0
+    type: 0
   speed: 10
   deathEffect: {fileID: 8405161502198450877, guid: c5182672b36d9714ea78013be6eaaaad, type: 3}
   healthBar: {fileID: 100635472765557565}
@@ -355,6 +362,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTarget: {fileID: 8823425327267309837, guid: 23dbd7f5186a8284482118317cec6cb6, type: 3}
+--- !u!114 &-1117114197093503569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284897011685351911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbde17a54c78b9b4cb5a54b5a810cd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 287828125876309780, guid: 9b59728cdb357954cbfaec26afdeb671, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: b920af2babf52934bbd33f7b5ce4fc8d, type: 2}
+  - {fileID: 11400000, guid: ae501355812c19b499a047e01342098a, type: 2}
+  - {fileID: 11400000, guid: f3ea3cea4d311814bba2d35d677658b7, type: 2}
 --- !u!1 &6824216721743241505
 GameObject:
   m_ObjectHideFlags: 0

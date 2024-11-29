@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 5771306285419013656}
   - component: {fileID: 6718583708954915062}
   - component: {fileID: -3963829612308616709}
+  - component: {fileID: -3403806755492763171}
   m_Layer: 11
   m_Name: FastEnemy
   m_TagString: Enemy
@@ -555,6 +556,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3403806755492763171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284897011685351911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbde17a54c78b9b4cb5a54b5a810cd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 287828125876309780, guid: 9b59728cdb357954cbfaec26afdeb671, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: b920af2babf52934bbd33f7b5ce4fc8d, type: 2}
+  - {fileID: 11400000, guid: ae501355812c19b499a047e01342098a, type: 2}
+  - {fileID: 11400000, guid: f3ea3cea4d311814bba2d35d677658b7, type: 2}
 --- !u!1 &6824216721743241505
 GameObject:
   m_ObjectHideFlags: 0

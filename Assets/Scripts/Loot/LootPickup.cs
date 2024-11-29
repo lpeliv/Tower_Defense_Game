@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LootPickup : MonoBehaviour
 {
-    public LootItem lootItem;
+    public Loot loot;
     public float attractionRange = 200f;
     public float attractionSpeed = 5f;
 
@@ -32,9 +32,9 @@ public class LootPickup : MonoBehaviour
         {
             playerTransform = other.transform;
             PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
-            if (playerInventory != null)
+            if (playerInventory != null && loot !=null)
             {
-                playerInventory.AddItem(lootItem);
+                playerInventory.AddItem(loot);
                 Destroy(gameObject);
             }
         }

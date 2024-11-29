@@ -61,7 +61,7 @@ public class NodeImproved : MonoBehaviour, IInteractable
             return;
         }
 
-        if (buildManager.HasMoney)
+        if (buildManager.HasResources)
         { 
             rend.material.color = hoverColor;
 

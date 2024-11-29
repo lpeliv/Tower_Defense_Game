@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3800482271920945086}
   - component: {fileID: 1921257368389362531}
   m_Layer: 10
-  m_Name: Arm
+  m_Name: GoblinFragment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bc42e8a5f0a239e4b90e8ebbd7c29158, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,13 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349fd60a5ab594f449ee2779cb76412b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootItem:
-    itemName: Torso
-    itemPrefab: {fileID: 287828125876309780}
-    dropChance: 100
-    minQuantity: 0
-    maxQuantity: 1
-    value: 50
-    type: 1
+  loot: {fileID: 11400000, guid: ae501355812c19b499a047e01342098a, type: 2}
   attractionRange: 200
   attractionSpeed: 10

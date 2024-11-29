@@ -25,9 +25,10 @@ public class BuildManager : MonoBehaviour
 
     public TurretUI turretUi;
     private ShopMenu shopMenu;
-
+    
     public bool CanBuild { get { return turretToBuild != null && IsBuildAllowed; } }
-    public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
+    public bool HasResources { get { return PlayerStats.Wood >= turretToBuild.wood &&
+                                            PlayerStats.Metal >= turretToBuild.metal; } }
     public bool IsBuildAllowed { get; private set; } = true;
 
     private void Start()
@@ -37,13 +38,15 @@ public class BuildManager : MonoBehaviour
 
     public void BuildTurretOn(NodeImproved node)
     {
-        if(PlayerStats.Money < turretToBuild.cost)
+        if(PlayerStats.Wood < turretToBuild.wood &&
+           PlayerStats.Metal < turretToBuild.metal)
         {
-            Debug.Log("Not enough money to build that!");
+            Debug.Log("Not enough materials to build that!");
             return;
         }
 
-        PlayerStats.Money -= turretToBuild.cost;
+        PlayerStats.Wood -= turretToBuild.wood;
+        PlayerStats.Metal -= turretToBuild.metal;
 
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;

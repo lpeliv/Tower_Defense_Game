@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1955614576864710464}
   - component: {fileID: -5015112133635879843}
   m_Layer: 10
-  m_Name: Torso
+  m_Name: TinyGoblinFragment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8778ff46400185f468b9cdfa34ac81d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,13 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349fd60a5ab594f449ee2779cb76412b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootItem:
-    itemName: Arm
-    itemPrefab: {fileID: 8754242141564850227}
-    dropChance: 50
-    minQuantity: 0
-    maxQuantity: 2
-    value: 20
-    type: 1
+  loot: {fileID: 11400000, guid: f3ea3cea4d311814bba2d35d677658b7, type: 2}
   attractionRange: 200
   attractionSpeed: 5

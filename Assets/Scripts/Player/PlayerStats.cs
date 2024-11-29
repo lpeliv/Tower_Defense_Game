@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 //This will be used for all player characteristics, health, damage, speed, etc.
@@ -31,32 +32,9 @@ public class PlayerStats : MonoBehaviour
         Drops = startDrops;
     }
 
-    private void Update()
-    {
-        //Testing material gathering
-        AddWood();
-        AddMetal();
-    }
-
     public void AddMoney(int amount)
     {
         Money += amount;
-    }
-
-    public void AddWood()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Wood++;
-        }
-    }
-
-    public void AddMetal()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Metal++;
-        }
     }
 
     public void AddDrop()
