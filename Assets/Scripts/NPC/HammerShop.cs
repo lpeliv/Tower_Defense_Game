@@ -1,39 +1,51 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
 
 public class HammerShop : NPCShop
 {
     public GameObject hammerObject;
-    public GameObject hammerUpgradePrefab;
-    public string requiredGemName;
+    public List<GameObject> hammerUpgrades;
+    public List<Loot> requiredGems;
 
-    public void TryUpgradeHammer(Button buttonClicked)
+    public List<HammerUpgradeStats> upgradeStats;
+
+    public void TryUpgradeHammer(int upgradeIndex)
     {
         PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+
+        if(upgradeIndex < 0 || upgradeIndex >= hammerUpgrades.Count || upgradeIndex >= requiredGems.Count)
+        {
+            Debug.LogWarning("Invalid upgrade index.");
+            return;
+        }
+        Loot requiredGem = requiredGems[upgradeIndex];
         bool hasGem = false;
-        Loot requiredGem = null;
 
         foreach (var item in playerInventory.InventoryDictionary)
         {
-            if(item.Key.itemName == requiredGemName)
+            if(item.Key.itemName == requiredGem.itemName)
             {
                 hasGem = true;
-                requiredGem = item.Key;
                 break;
             }
         }
 
         if(hasGem)
         {
-            //When upgrading, new object would be set to visible
-            hammerObject = Instantiate(hammerUpgradePrefab, hammerObject.transform.position, Quaternion.identity);
+            hammerUpgrades[upgradeIndex].SetActive(true);
 
-            if(requiredGem != null)
+            Hammer hammer = hammerObject.GetComponent<Hammer>();
+            if (hammer != null)
+            {
+                HammerUpgradeStats stats = upgradeStats[upgradeIndex];
+                hammer.HammerUpgraded(stats.damage, stats.range, stats.fireRate);
+                Debug.Log("UpgradedHammer");
+            }
+
+            if (requiredGem != null)
             {
                 playerInventory.RemoveItem(requiredGem, 1);
             }
-            Debug.Log("Hammer upgraded.");
         }
         else
         {

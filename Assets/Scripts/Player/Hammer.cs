@@ -38,4 +38,13 @@ public class Hammer : MonoBehaviour
             }
         }
     }
+
+    public void HammerUpgraded(int newDamage, float newRange, float newFireRate)
+    {
+        Debug.Log($"Before Upgrade: Damage={damage}, Range={range}, FireRate={fireRate}");
+        damage += newDamage;
+        range += newRange;
+        fireRate += newFireRate;
+        Debug.Log($"After Upgrade: Damage={damage}, Range={range}, FireRate={fireRate}");
+    }
 }

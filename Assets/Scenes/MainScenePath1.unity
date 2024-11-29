@@ -2984,7 +2984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &217928571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7029,6 +7029,89 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6481699178479558909, guid: 5c91e9897a9790e4c89c5f19e0d66724, type: 3}
   m_PrefabInstance: {fileID: 474673681}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &476358603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476358604}
+  - component: {fileID: 476358606}
+  - component: {fileID: 476358605}
+  m_Layer: 9
+  m_Name: HammerUpgrade2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &476358604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476358603}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.31502432, y: -0.5245355, z: -0.21726957, w: 0.76053685}
+  m_LocalPosition: {x: 0.099998474, y: 1.4427025, z: 1.5526974}
+  m_LocalScale: {x: 0.07241945, y: 0.34881985, z: 0.077039555}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 656743831}
+  m_LocalEulerAnglesHint: {x: 14.551, y: -74.955, z: -43.068}
+--- !u!23 &476358605
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476358603}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &476358606
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476358603}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &477064031
 GameObject:
   m_ObjectHideFlags: 0
@@ -9435,6 +9518,7 @@ Transform:
   m_Children:
   - {fileID: 1134962039}
   - {fileID: 1553144467}
+  - {fileID: 476358604}
   m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &656743834
@@ -9580,9 +9664,9 @@ RectTransform:
   - {fileID: 771932231}
   m_Father: {fileID: 810331773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -50}
   m_SizeDelta: {x: 120, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &673782569
@@ -9632,10 +9716,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1487135083}
         m_TargetAssemblyTypeName: HammerShop, Assembly-CSharp
         m_MethodName: TryUpgradeHammer
-        m_Mode: 2
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 673782569}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11377,9 +11461,9 @@ RectTransform:
   - {fileID: 374457732}
   m_Father: {fileID: 810331773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -150}
   m_SizeDelta: {x: 120, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800919912
@@ -11426,14 +11510,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1590359064}
-        m_TargetAssemblyTypeName: MaterialShop, Assembly-CSharp
-        m_MethodName: AddMetal
-        m_Mode: 1
+      - m_Target: {fileID: 1487135083}
+        m_TargetAssemblyTypeName: HammerShop, Assembly-CSharp
+        m_MethodName: TryUpgradeHammer
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13241,7 +13325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12617dfa6ea3e604e97d59fbecff4c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryList: []
+  inventoryList:
+  - item: {fileID: 11400000, guid: b920af2babf52934bbd33f7b5ce4fc8d, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: b6815cce62d5a754ab4d6c40cf4b6dc8, type: 2}
+    quantity: 1
   stats: {fileID: 355017763}
 --- !u!114 &959301736
 MonoBehaviour:
@@ -20609,9 +20697,16 @@ MonoBehaviour:
   ui: {fileID: 2094878392}
   hammerPrefab: {fileID: 656743830}
   isShopMenuOpened: 0
-  hammerObject: {fileID: 1134962038}
-  hammerUpgradePrefab: {fileID: 1553144466}
-  requiredGemName: GemUpgrade1
+  hammerObject: {fileID: 656743830}
+  hammerUpgrades:
+  - {fileID: 1553144466}
+  - {fileID: 476358603}
+  requiredGems:
+  - {fileID: 11400000, guid: b920af2babf52934bbd33f7b5ce4fc8d, type: 2}
+  - {fileID: 11400000, guid: b6815cce62d5a754ab4d6c40cf4b6dc8, type: 2}
+  upgradeStats:
+  - {fileID: 11400000, guid: 80b2552a4126b714b9f4263d76eeb9e8, type: 2}
+  - {fileID: 11400000, guid: ded0af958838dd84e84176134aafc925, type: 2}
 --- !u!1001 &1487841290
 PrefabInstance:
   m_ObjectHideFlags: 0
