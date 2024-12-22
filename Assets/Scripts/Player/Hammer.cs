@@ -5,6 +5,8 @@ public class Hammer : MonoBehaviour
     public int damage = 10;
     public float range = 50f;
     public float fireRate = 2f;
+    //This will be used later for hitting multiple enemies instead of one
+    public float hitRadius = 2f;
 
     public Camera firstPersonCamera;
     public Animator animator;

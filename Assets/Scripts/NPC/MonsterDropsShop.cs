@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class MonsterDropsShop : NPCShop
 {
-    //public PlayerInventory playerInventory;
+    public void TrySellItem(Loot lootToSell, int quantity)
+    {
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
 
-    //protected override void OnShopOpened()
-    //{
-    //    Debug.Log("Monester Drops Shop Opened");
-    //}
+        if(playerInventory.InventoryDictionary.TryGetValue(lootToSell, out int currentQuantity) && currentQuantity >= quantity)
+        {
+            playerInventory.RemoveItem(lootToSell, quantity);
+            int totalValue = lootToSell.value * quantity;
+            PlayerStats.Money += totalValue;
 
-    //protected override void OnShopClosed()
-    //{
-    //    Debug.Log("Monester Drops Shop Closed");
-    //}
+            Debug.Log($"Sold {quantity}x {lootToSell.itemName} for {totalValue} money!");
+        }
+        else
+        {
+            Debug.Log($"Not enough {lootToSell.itemName} to sell.");
+        }
+    }
 }

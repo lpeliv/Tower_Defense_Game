@@ -39,7 +39,7 @@ public class MaterialShop : NPCShop
             standardTurretButton.gameObject.SetActive(true);
             PlayerStats.Money -= standardTurret.cost;
 
-            MoveButtonToBottom(clickedButton);
+            RemoveButton(clickedButton);
         }
     }
 
@@ -51,14 +51,13 @@ public class MaterialShop : NPCShop
             anotherTurretButton.gameObject.SetActive(true);
             PlayerStats.Money -= anotherTurret.cost;
 
-            MoveButtonToBottom(clickedButton);
+            RemoveButton(clickedButton);
         }
     }
 
-    //This will be changed later, so button indexes are in order
-    private void MoveButtonToBottom(Button button)
+    private void RemoveButton(Button button)
     {
         button.interactable = false;
-        button.transform.SetSiblingIndex(button.transform.parent.childCount - 1);
+        button.gameObject.SetActive(false);
     }
 }

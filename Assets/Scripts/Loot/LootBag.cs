@@ -35,9 +35,5 @@ public class LootBag : MonoBehaviour
         {
             Instantiate(droppedItem.itemPrefab, spawnPosition, Quaternion.identity);
         }
-        else
-        {
-
-        }
     }
 }
