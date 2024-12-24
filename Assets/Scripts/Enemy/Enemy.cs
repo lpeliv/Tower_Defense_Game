@@ -3,39 +3,34 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Enemy Stats")]
-    public float startSpeed = 10f;
+    [Header("EnemyData")]
+    public EnemyData enemyData;
+    
     private float health;
-    public float startHealth = 100;
-    public int worth = 50;
-    public int damage = 1;
-
-    //[Header("Loot Drops")]
-    //public LootItem[] lootTable;
-
-    [HideInInspector]
-    public float speed;
 
     [Header("References")]
-    public GameObject deathEffect;
     public Image healthBar;
-    private LootBag lootBag;
 
     void Start()
     {
-        speed = startSpeed;
-        health = startHealth;
+        InitializeEnemy();
+    }
 
-        lootBag = GetComponent<LootBag>();
+    private void InitializeEnemy()
+    {
+        health = enemyData.startHealth;
     }
 
     public void TakeDamage(int amount)
     {
         health -= amount;
 
-        healthBar.fillAmount = health / startHealth;
+        if(healthBar != null)
+        {
+            healthBar.fillAmount = health / enemyData.startHealth;
+        }
 
-        if(health <= 0)
+        if (health <= 0)
         {
             Die();
         }
@@ -43,19 +38,34 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        lootBag?.DropLoot(transform.position);
+        DropLoot();
 
-        GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 3f);
+        if(enemyData.deathEffect != null)
+        {
+            GameObject effect = Instantiate(enemyData.deathEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 3f);
+        }
 
         WaveSpawner.EnemiesAlive--;
 
         Destroy(gameObject);
     }
 
+    private void DropLoot()
+    {
+        foreach(var loot in enemyData.lootList)
+        {
+            float dropChance = loot.dropChance;
+            if(Random.value <= dropChance)
+            {
+                Instantiate(loot.itemPrefab, transform.position, Quaternion.identity);
+            }
+        }
+    }
+
     public void EndPath()
     {
-        PlayerStats.Lives -= damage;
+        PlayerStats.Lives -= enemyData.damage;
         WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
     }

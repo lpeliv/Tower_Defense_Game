@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 8754242141564850227, guid: d8ce82bb71cec624abf27486e6556f08, type: 3}
   itemName: Tiny Gobo
-  dropChance: 50
+  dropChance: 0.3
+  value: 0

@@ -1,10 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public TurretBlueprint standardTurret;
-    public TurretBlueprint anotherTurret;
+    public TurretBlueprint[] turrets;
 
     BuildManager buildManager;
 
@@ -13,16 +12,11 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    //This will be changed in future, entire shop will look different
-    public void SelectStandardTurret()
+    public void SelectTurret(int index)
     {
-        Debug.Log("Standard Turret Selected");
-        buildManager.SelectTurretToBuild(standardTurret);
-    }
+        if (index < 0 || index >= turrets.Length) return;
 
-    public void SelectAnotherTurret()
-    {
-        Debug.Log("Another Turret Selected");
-        buildManager.SelectTurretToBuild(anotherTurret);
+        Debug.Log($"{turrets[index].name} Selected");
+        buildManager.SelectTurretToBuild(turrets[index]);
     }
 }

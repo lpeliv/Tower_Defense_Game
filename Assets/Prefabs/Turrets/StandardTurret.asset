@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b867f7d011d67a4cba2c8f588f6e22e, type: 3}
-  m_Name: GemUpgradeFive
+  m_Script: {fileID: 11500000, guid: 9a654b5bbd4434c4387aa5e80912b4c8, type: 3}
+  m_Name: StandardTurret
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 287828125876309780, guid: 9b59728cdb357954cbfaec26afdeb671, type: 3}
-  itemName: GemUpgrade5
-  dropChance: 0.1
-  value: 0
+  prefab: {fileID: 5286016388194523179, guid: cbafd9fe6e1686f45897c5a05c6f2c38, type: 3}
+  wood: 30
+  metal: 5
+  cost: 0
+  isUnlocked: 1
+  type: 0

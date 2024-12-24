@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 287828125876309780, guid: 9b59728cdb357954cbfaec26afdeb671, type: 3}
   itemName: GemUpgrade1
-  dropChance: 75
+  dropChance: 0
+  value: 0

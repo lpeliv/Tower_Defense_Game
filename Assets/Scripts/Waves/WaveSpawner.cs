@@ -41,7 +41,7 @@ public class WaveSpawner : MonoBehaviour
 
             for (int j = 0; j < wave.enemies[i].count; j++)
             {
-                SpawnEnemy(waveGroup.enemy, waveGroup.spawnPoint);
+                SpawnEnemy(waveGroup.enemyData, waveGroup.spawnPoint);
                 EnemiesAlive++;
                 yield return new WaitForSeconds(1f / wave.spawnRate);
             }
@@ -52,9 +52,11 @@ public class WaveSpawner : MonoBehaviour
         if(waveIndex == waves.Length)
         {
             Debug.Log("Level finished!");
+            Destroy(wave.fog);
             this.enabled = false;
         }
     }
+
 
     public void StartNewWave()
     {
@@ -65,12 +67,18 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(GameObject enemy, Transform spawnPoint)
+    void SpawnEnemy(EnemyData enemyData, Transform spawnPoint)
     {
         float offsetX = Random.Range(-spawnOffsetX, spawnOffsetX);
         float offsetZ = Random.Range(-spawnOffsetZ, spawnOffsetZ);
 
         Vector3 spawnPosition = spawnPoint.position + new Vector3(offsetX, 0, offsetZ);
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+
+        GameObject enemyInstance = Instantiate(enemyData.enemyPrefab, spawnPosition, spawnPoint.rotation);
+        Enemy enemyScript = enemyInstance.GetComponent<Enemy>();
+        if(enemyScript != null)
+        {
+            enemyScript.enemyData = enemyData;
+        }
     }
 }
