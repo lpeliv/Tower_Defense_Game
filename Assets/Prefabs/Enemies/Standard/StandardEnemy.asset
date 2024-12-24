@@ -19,6 +19,4 @@ MonoBehaviour:
   damage: 10
   deathEffect: {fileID: 8405161502198450877, guid: c5182672b36d9714ea78013be6eaaaad, type: 3}
   lootList:
-  - {fileID: 11400000, guid: ae501355812c19b499a047e01342098a, type: 2}
-  - {fileID: 11400000, guid: f3ea3cea4d311814bba2d35d677658b7, type: 2}
-  - {fileID: 11400000, guid: 81f3083296fb1684489e97eb894960c4, type: 2}
+  - {fileID: 11400000, guid: b920af2babf52934bbd33f7b5ce4fc8d, type: 2}

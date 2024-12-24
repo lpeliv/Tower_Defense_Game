@@ -7,7 +7,7 @@ public class StartWave : MonoBehaviour, IInteractable
 
     public void Start()
     {
-        waveSpawner = FindObjectOfType<WaveSpawner>();     
+        waveSpawner = FindObjectOfType<WaveSpawner>();
     }
 
     public void Interact()

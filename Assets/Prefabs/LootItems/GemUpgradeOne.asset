@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b867f7d011d67a4cba2c8f588f6e22e, type: 3}
   m_Name: GemUpgradeOne
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 287828125876309780, guid: 9b59728cdb357954cbfaec26afdeb671, type: 3}
+  itemPrefab: {fileID: 9178569214349982918, guid: 1f175a0ada7d94a45b0401b364b63a12, type: 3}
   itemName: GemUpgrade1
-  dropChance: 0
+  dropChance: 0.2
   value: 0

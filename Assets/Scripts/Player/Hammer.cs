@@ -33,6 +33,7 @@ public class Hammer : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward, out hit, range))
         {
+            Debug.DrawLine(firstPersonCamera.transform.position, hit.point, Color.red, 1f);
             Enemy targetEnemy = hit.transform.GetComponent<Enemy>();
             if(targetEnemy != null)
             {
